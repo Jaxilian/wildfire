@@ -58,7 +58,9 @@ int main(){
     cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
     swa.colormap = cmap;
     swa.event_mask = ExposureMask | KeyPressMask;
-    win = XCreateWindow(dpy, root, 0, 0, 600, 600, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
+    XWindowAttributes attr;
+    XGetWindowAttributes(dpy, root, &attr);
+    win = XCreateWindow(dpy, root, 0, 0, attr.width, attr.height, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
     XMapWindow(dpy, win);
     XStoreName(dpy, win, "VERY SIMPLE APPLICATION");
     glc = glXCreateContext(dpy, vi, NULL, GL_TRUE);
