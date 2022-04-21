@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "glfw3.h": "c",
+        "gl.h": "c",
+        "string.h": "c",
+        "x.h": "c"
+    }
+}

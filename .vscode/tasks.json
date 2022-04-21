@@ -1,0 +1,36 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "type": "shell",
+        "label": "g++ build active file",
+        "command": "/usr/bin/g++",
+        "args": [
+
+            // IN FILES
+            "-g",
+            //"${workspaceFolder}/glad/**.h",
+            "${workspaceFolder}/**.c",
+            //"${workspaceFolder}/**.h",
+            // OUT FILE
+            "-o",
+            "${workspaceFolder}/${workspaceFolderBasename}",
+            
+            // LINK LIBRARIES
+            "-lX11",
+            "-lGL",
+            "-lGLU"
+
+
+        ],
+        "options": {
+          "cwd": "/usr/bin"
+        },
+        "problemMatcher": ["$gcc"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      }
+    ]
+  }
