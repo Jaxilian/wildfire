@@ -35,16 +35,16 @@ void DrawAQuad() {
     glColor3f(1., 1., 0.); glVertex3f(-.75,  .75, 0.);
     glEnd();
 } 
- 
+
 int main(int argc, char *argv[]) {
 
     dpy = XOpenDisplay(NULL);
-    
+
     if(dpy == NULL) {
         printf("\n\tcannot connect to X server\n\n");
             exit(0);
     }
-            
+
     win = DefaultRootWindow(dpy);
 
     vi = glXChooseVisual(dpy, 0, att);
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
     else {
         printf("\n\tvisual %p selected\n", (void *)vi->visualid); /* %p creates hexadecimal output like in glxinfo */
     }
-    
+
 
     cmap = XCreateColormap(dpy, root, vi->visual, AllocNone);
 
@@ -66,24 +66,24 @@ int main(int argc, char *argv[]) {
     XGetWindowAttributes(dpy,root,&attr);
     //win = XCreateWindow(dpy, root, 0, 0, attr.width, attr.height, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
 
-    //XMapWindow(dpy, win);
-    //XStoreName(dpy, win, "VERY SIMPLE APPLICATION");
-    
+    XMapWindow(dpy, win);
+    XStoreName(dpy, win, "VERY SIMPLE APPLICATION");
+
     glc = glXCreateContext(dpy, vi, NULL, GL_TRUE);
     glXMakeCurrent(dpy, win, glc);
-    
+
     glEnable(GL_DEPTH_TEST); 
- 
+
     while(1) {
         XNextEvent(dpy, &xev);
-            
+
             if(xev.type == Expose) {
                 XGetWindowAttributes(dpy, win, &gwa);
                     glViewport(0, 0, gwa.width, gwa.height);
                 DrawAQuad(); 
                     glXSwapBuffers(dpy, win);
             }
-                    
+
         else if(xev.type == KeyPress) {
                 glXMakeCurrent(dpy, None, NULL);
                 glXDestroyContext(dpy, glc);
