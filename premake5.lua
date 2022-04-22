@@ -15,26 +15,20 @@ project "wildfire"
 
 
     links { 
-        "glfw"
+        "X11",
+        "GL",
+        "GLU"
     }
 
     files { 
         "src/**.h",
         "src/**.hpp",
         "src/**.c",
-        "src/**.cpp",
-        "ext/**.h",
-        "ext/**.hpp",
-        "ext/**.c",
-        "ext/**.cpp"
+        "src/**.cpp"
     }
 
     includedirs { 
-        "src/editor/math/dependencies",
-        "src/editor/win",
-        "src/game",
-        "src",
-        "ext"
+        "src/"
     }
 
 
