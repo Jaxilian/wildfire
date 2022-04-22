@@ -66,8 +66,8 @@ int main(int argc, char *argv[]) {
     XGetWindowAttributes(dpy,root,&attr);
     //win = XCreateWindow(dpy, root, 0, 0, attr.width, attr.height, 0, vi->depth, InputOutput, vi->visual, CWColormap | CWEventMask, &swa);
 
-    XMapWindow(dpy, win);
-    XStoreName(dpy, win, "VERY SIMPLE APPLICATION");
+    //XMapWindow(dpy, win);
+    //XStoreName(dpy, win, "VERY SIMPLE APPLICATION");
     
     glc = glXCreateContext(dpy, vi, NULL, GL_TRUE);
     glXMakeCurrent(dpy, win, glc);
